@@ -32,7 +32,11 @@ def input(day=day, cache=True):
 
     print("aoc: Downloading input...")
     session = os.environ["AOC_SESSION"]
-    req = requests.get(input_url, cookies={"session": session})
+    req = requests.get(
+        input_url,
+        cookies={"session": session},
+        headers={"user-agent": "https://github.com/Nughm3/advent-of-code"},
+    )
 
     if req.status_code == 404:
         raise Exception("Puzzle input not available yet!")
@@ -62,6 +66,7 @@ def bench(func):
     return bench_wrapper
 
 
+# When run as a script
 if __name__ == "__main__":
     if today.month != 12 or day > 25:
         print("Advent of Code is not currently running!")

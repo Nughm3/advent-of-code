@@ -6,7 +6,7 @@ input = aoc.input(3).splitlines()
 
 
 @aoc.bench
-def part_1():
+def part1():
     total = 0
     for bag in input:
         mid = len(bag) >> 1
@@ -22,7 +22,7 @@ def part_1():
 
 
 @aoc.bench
-def part_2():
+def part2():
     total = 0
     for i in range(0, len(input), 3):
         a, b, c = input[i], input[i + 1], input[i + 2]
