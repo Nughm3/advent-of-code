@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Advent of Code input and example files
+*.in
+*.ex
