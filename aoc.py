@@ -17,7 +17,6 @@ def read_file(path=f"{day}.in"):
 
 # Get puzzle input for today's puzzle
 def today(cache=True):
-    assert today.month == 12
     return input(day, year)
 
 # Get puzzle input for an event
