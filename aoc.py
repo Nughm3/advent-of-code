@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 
 # aoc.py: helper for Advent of Code.
-# https://adventofcode.com
-
-# Run as a command-line program to open today's problem.
 # Import aoc.py as a library to use the utility functions.
 # IMPORTANT: make sure to set the AOC_SESSION environment variable.
 
@@ -18,20 +15,26 @@ def read_file(path=f"{day}.in"):
     with open(path) as f:
         return f.read()
 
+# Get puzzle input for today's puzzle
+def today(cache=True):
+    assert today.month == 12
+    return input(day, year)
 
-# Get puzzle input as a string. Will cache it if it is downloaded.
-def input(day=day, cache=True):
+# Get puzzle input for an event
+def input(day, year, cache=True):
     import requests, os
+    assert day >= 1 and day <= 25
 
     path = f"{day}.in"
     input_url = f"https://adventofcode.com/{year}/day/{day}/input"
+    session = os.environ["AOC_SESSION"]
 
     if os.path.isfile(path):
         print(f"aoc: Using cached input '{path}'")
         return read_file(path)
 
     print("aoc: Downloading input...")
-    session = os.environ["AOC_SESSION"]
+
     req = requests.get(
         input_url,
         cookies={"session": session},
@@ -65,17 +68,17 @@ def bench(func):
 
     return bench_wrapper
 
-
-# When run as a script
 if __name__ == "__main__":
-    if today.month != 12 or day > 25:
-        print("Advent of Code is not currently running!")
-    else:
-        url = f"https://adventofcode.com/{year}/day/{day}"
-
-        print(f"Advent of Code {year} (day {day})\n{url}")
-        print("\nOpening in web browser...")
-
-        import webbrowser
-
-        webbrowser.open(url)
+    print("Import `aoc` to use it as a utility for fetching puzzle inputs.")
+    
+    api = {
+        "input(DAY, YEAR)": "get puzzle input for day DAY in event YEAR",
+        "today()": "get today's puzzle input, recommended to switch to input() later as this changes every day",
+        "read_file(PATH?)": "read the file at PATH, defaults to today's input DAY.in",
+        "@bench": "decorator to time a function and print its runtime"
+    }
+    
+    for k, v in api.items():
+        print(f" - aoc.{k}: {v}")
+    
+    print("Make sure the AOC_SESSION environment variable is set to your session cookie.")

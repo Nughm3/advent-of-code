@@ -2,7 +2,7 @@ import aoc
 
 ALPHA = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-input = aoc.input(3).splitlines()
+input = aoc.input(3, 2022).splitlines()
 
 
 @aoc.bench

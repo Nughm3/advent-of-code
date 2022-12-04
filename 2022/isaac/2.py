@@ -1,6 +1,6 @@
 import aoc
 
-input = [x.split(" ") for x in aoc.input(2).splitlines()]
+input = [x.split(" ") for x in aoc.input(2, 2022).splitlines()]
 
 win = {"A": "Y", "B": "Z", "C": "X"}
 lose = {"A": "Z", "B": "X", "C": "Y"}

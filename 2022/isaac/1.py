@@ -1,6 +1,6 @@
 import aoc
 
-input = aoc.input(1).splitlines()
+input = aoc.input(1, 2022).splitlines()
 
 total = []
 
