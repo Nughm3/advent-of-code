@@ -1,6 +1,7 @@
 import aoc
 
-input = aoc.today().splitlines()
+input = aoc.input(4, 2022).splitlines()
+
 
 @aoc.bench
 def both():
@@ -9,13 +10,13 @@ def both():
     count_b = 0
     for line in input:
         line = line.split(",")
-    
+
         a = line[0].split("-")
-        a = set(range(int(a[0]), int(a[1])+1))
+        a = set(range(int(a[0]), int(a[1]) + 1))
 
         b = line[1].split("-")
-        b = set(range(int(b[0]), int(b[1])+1))
-    
+        b = set(range(int(b[0]), int(b[1]) + 1))
+
         if a.issubset(b) or b.issubset(a):
             count_a += 1
         if a.intersection(b):
@@ -23,5 +24,6 @@ def both():
 
     print(count_a)
     print(count_b)
-    
+
+
 both()

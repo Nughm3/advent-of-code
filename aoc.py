@@ -15,13 +15,16 @@ def read_file(path=f"{day}.in"):
     with open(path) as f:
         return f.read()
 
+
 # Get puzzle input for today's puzzle
 def today(cache=True):
     return input(day, year)
 
+
 # Get puzzle input for an event
 def input(day, year, cache=True):
     import requests, os
+
     assert day >= 1 and day <= 25
 
     path = f"{day}.in"
@@ -67,17 +70,18 @@ def bench(func):
 
     return bench_wrapper
 
+
 if __name__ == "__main__":
     print("Import `aoc` to use it as a utility for fetching puzzle inputs.")
-    
+
     api = {
         "input(DAY, YEAR)": "get puzzle input for day DAY in event YEAR",
         "today()": "get today's puzzle input, recommended to switch to input() later as this changes every day",
         "read_file(PATH?)": "read the file at PATH, defaults to today's input DAY.in",
-        "@bench": "decorator to time a function and print its runtime"
+        "@bench": "decorator to time a function and print its runtime",
     }
-    
+
     for k, v in api.items():
         print(f" - aoc.{k}: {v}")
-    
-    print("Make sure the AOC_SESSION environment variable is set to your session cookie.")
+
+    print("Set the AOC_SESSION environment variable to your session cookie.")
